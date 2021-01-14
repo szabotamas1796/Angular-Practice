@@ -1,0 +1,32 @@
+<section class="budget-item-section">
+    <div class="budget-items-container">
+
+        <div class="income-column">
+            <h1 class="income">Income</h1>
+            <div class="budget-items">
+                <div *ngFor="let item of budgetItems">  <!-- For loop -->
+                    <app-budget-item-card 
+                    *ngIf="item.amount >=0" 
+                    [item]="item" 
+                    (xButtonClick)="onDeleteButtonClicked(item)"
+                    style=" display:block; margin-bottom: 20px;"></app-budget-item-card> <!-- Feltétel(ngIf), ha az érték nagyobb v. egyenlő mint 0 akkor Income-->
+                </div>
+                
+ 
+            </div>
+        </div>
+
+        <div class="expenses-column">
+            <h1 class="income">Expenses</h1>
+            <div class="budget-items">
+                <div *ngFor="let item of budgetItems">  <!-- For loop -->
+                    <app-budget-item-card 
+                    *ngIf="item.amount <0" 
+                    [item]="item" 
+                    (xButtonClick)="onDeleteButtonClicked(item)"
+                    style=" display:block; margin-bottom: 20px;"></app-budget-item-card> <!-- Feltétel(ngIf), ha az érték nagyobb v. egyenlő mint 0 akkor Income-->
+                </div>
+             </div>
+        </div>
+
+

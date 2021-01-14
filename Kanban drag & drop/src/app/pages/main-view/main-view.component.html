@@ -1,0 +1,35 @@
+<div class="root">
+    <div class="navbar has-background-dark">
+        <div class="navbar-brand">
+            <div class="navbar-item">
+                <h1 class="app-name has-gradient-text">Drag & Drop Kanban Angular Practice Project</h1>
+            </div>
+            
+        </div>
+    </div>
+    <div class="board">
+        <div class="board-bar">
+            <p class="board-name">Feladat menedzsment</p>
+        </div>
+
+        <div class="board-wrapper">
+            <div class="board-columns"cdkDropListGroup> <!--Ide tedd a cdkDropListGroupot, hogy az összes oszlopra érvényes legyen!-->
+                <div class="board-column" *ngFor="let column of board.columns"> <!-- Itt loopoljuk be az összes oszlopot-->
+
+                    <div class="column-title">
+                        {{column.name}} <!--String interpolation, itt iratjuk ki a beloopolt oszlopok neveit-->
+                    </div>
+                    
+                    <div class="tasks-container"
+                    cdkDropList
+                    [cdkDropListData]="column.tasks"
+                    (cdkDropListDropped)="drop($event)"> <!--A column.task-al hívjuk be a feladatokat-->
+                        <div class="task" *ngFor="let item of column.tasks" cdkDrag> <!--Ezzel loopoljuk a drag&drop rendszert-->
+                            {{ item }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
